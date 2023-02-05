@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/albrechs/react-native-ztm/static/css/main.3046f2f9.css",
-    "main.js": "/albrechs/react-native-ztm/static/js/main.8d64cf76.js",
-    "static/js/787.32032a02.chunk.js": "/albrechs/react-native-ztm/static/js/787.32032a02.chunk.js",
-    "static/media/SEGA.woff": "/albrechs/react-native-ztm/static/media/SEGA.47b4bfa94ef243af4a5b.woff",
-    "index.html": "/albrechs/react-native-ztm/index.html",
-    "main.3046f2f9.css.map": "/albrechs/react-native-ztm/static/css/main.3046f2f9.css.map",
-    "main.8d64cf76.js.map": "/albrechs/react-native-ztm/static/js/main.8d64cf76.js.map",
-    "787.32032a02.chunk.js.map": "/albrechs/react-native-ztm/static/js/787.32032a02.chunk.js.map"
+    "main.css": "/react-native-ztm/static/css/main.9bda9269.css",
+    "main.js": "/react-native-ztm/static/js/main.b8b74c2d.js",
+    "static/js/787.32032a02.chunk.js": "/react-native-ztm/static/js/787.32032a02.chunk.js",
+    "static/media/SEGA.woff": "/react-native-ztm/static/media/SEGA.47b4bfa94ef243af4a5b.woff",
+    "index.html": "/react-native-ztm/index.html",
+    "main.9bda9269.css.map": "/react-native-ztm/static/css/main.9bda9269.css.map",
+    "main.b8b74c2d.js.map": "/react-native-ztm/static/js/main.b8b74c2d.js.map",
+    "787.32032a02.chunk.js.map": "/react-native-ztm/static/js/787.32032a02.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3046f2f9.css",
-    "static/js/main.8d64cf76.js"
+    "static/css/main.9bda9269.css",
+    "static/js/main.b8b74c2d.js"
   ]
 }

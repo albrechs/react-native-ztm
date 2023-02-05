@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/react-native-ztm/static/css/main.9bda9269.css",
-    "main.js": "/react-native-ztm/static/js/main.b8b74c2d.js",
+    "main.js": "/react-native-ztm/static/js/main.1cbbb5ab.js",
     "static/js/787.32032a02.chunk.js": "/react-native-ztm/static/js/787.32032a02.chunk.js",
     "static/media/SEGA.woff": "/react-native-ztm/static/media/SEGA.47b4bfa94ef243af4a5b.woff",
     "index.html": "/react-native-ztm/index.html",
     "main.9bda9269.css.map": "/react-native-ztm/static/css/main.9bda9269.css.map",
-    "main.b8b74c2d.js.map": "/react-native-ztm/static/js/main.b8b74c2d.js.map",
+    "main.1cbbb5ab.js.map": "/react-native-ztm/static/js/main.1cbbb5ab.js.map",
     "787.32032a02.chunk.js.map": "/react-native-ztm/static/js/787.32032a02.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.9bda9269.css",
-    "static/js/main.b8b74c2d.js"
+    "static/js/main.1cbbb5ab.js"
   ]
 }

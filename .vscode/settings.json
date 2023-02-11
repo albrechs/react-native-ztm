@@ -1,0 +1,6 @@
+{
+  "prettier.singleQuote": false,
+  "eslint.workingDirectories": [
+    {"mode":"auto"}
+  ]
+}

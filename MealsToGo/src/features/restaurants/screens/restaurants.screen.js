@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FlatList } from "react-native";
-import { Searchbar } from "react-native-paper";
+import { Searchbar, ActivityIndicator } from "react-native-paper";
 import styled from "styled-components/native";
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 import { SafeArea } from "../../../utils/safe-area.component";
+import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
 
 const SearchContainer = styled.View`
   padding: ${(props) => props.theme.space[3]};
@@ -15,6 +16,15 @@ const RestaurantList = styled(FlatList).attrs({
   },
 })``;
 
+const Loading = styled(ActivityIndicator).attrs({
+  animating: true,
+  size: "large",
+  color: "#2182BD",
+})`
+  flex: 1;
+  justify-contents: center;
+`;
+
 export const RestaurantsScreen = () => {
   const [searchQuery, setSearchQuery] = React.useState("");
   const onChangeSearch = (query) => {
@@ -22,6 +32,7 @@ export const RestaurantsScreen = () => {
     console.log(query);
   };
 
+  const { restaurants, isLoading, error } = useContext(RestaurantsContext);
   return (
     <SafeArea>
       <SearchContainer>
@@ -31,27 +42,16 @@ export const RestaurantsScreen = () => {
           value={searchQuery}
         />
       </SearchContainer>
-      <RestaurantList
-        data={[
-          { name: 1 },
-          { name: 2 },
-          { name: 3 },
-          { name: 4 },
-          { name: 5 },
-          { name: 6 },
-          { name: 7 },
-          { name: 8 },
-          { name: 9 },
-          { name: 10 },
-          { name: 11 },
-          { name: 12 },
-          { name: 13 },
-          { name: 14 },
-          { name: 15 },
-        ]}
-        renderItem={() => <RestaurantInfoCard />}
-        key={(item) => item.name}
-      />
+      {isLoading && <Loading />}
+      {!isLoading && (
+        <RestaurantList
+          data={restaurants}
+          renderItem={({ item }) => {
+            return <RestaurantInfoCard restaurant={item} />;
+          }}
+          keyExtractor={(item) => item.name}
+        />
+      )}
     </SafeArea>
   );
 };

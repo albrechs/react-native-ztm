@@ -15,17 +15,15 @@ import {
   Icon,
 } from "./restaurant-info-card.styles";
 
-export const RestaurantInfoCard = ({ restaurant = {} }) => {
+export const RestaurantInfoCard = ({ restaurant }) => {
   const {
-    name = "some place",
-    icon = "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
-    photos = [
-      "https://a.cdn-hotels.com/gdcs/production0/d1513/35c1c89e-408c-4449-9abe-f109068f40c0.jpg",
-    ],
-    address = "123 mulbery ln boston, ma 02125",
-    isOpenNow = true,
-    rating = 4,
-    isClosedTemporarily = true,
+    name,
+    icon,
+    photos,
+    address,
+    isOpenNow,
+    rating,
+    isClosedTemporarily,
   } = restaurant;
 
   const ratingArr = Array.from(new Array(Math.floor(rating)));
@@ -49,7 +47,7 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
             {isOpenNow && (
               <>
                 <Spacer position="left" size="large">
-                  <SvgXml xml={open} height={20} width={20} />
+                  <SvgXml key="open" xml={open} height={20} width={20} />
                 </Spacer>
               </>
             )}

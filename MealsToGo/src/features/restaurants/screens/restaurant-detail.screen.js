@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components/native";
-import { Text } from "../../../components/typography/text.component";
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 import { RestaurantMenuList } from "../components/restaurant-menu-list.component";
 

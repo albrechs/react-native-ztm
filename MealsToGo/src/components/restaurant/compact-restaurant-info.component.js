@@ -26,8 +26,9 @@ const Name = styled(Text)`
   text-align: center;
 `;
 
-export const CompactRestaurantInfo = ({ restaurant }) => {
-  const Image = Platform.OS === "android" ? CompactWebView : CompactImage;
+export const CompactRestaurantInfo = ({ restaurant, isMap }) => {
+  const Image =
+    Platform.OS === "android" && isMap ? CompactWebView : CompactImage;
 
   return (
     <CompactContainer>

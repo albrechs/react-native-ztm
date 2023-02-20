@@ -6,9 +6,11 @@ module.exports = {
   icon: "./assets/icon.png",
   userInterfaceStyle: "light",
   extra: {
-    apiKey: process.env.FIREBASE_API_KEY,
-    messagingId: process.env.FIREBASE_MESSAGING_ID,
-    appId: process.env.FIREBASE_APP_ID,
+    firebase: {
+      apiKey: process.env.FIREBASE_API_KEY,
+      messagingSenderId: process.env.FIREBASE_MESSAGING_ID,
+      appId: process.env.FIREBASE_APP_ID,
+    },
   },
   splash: {
     image: "./assets/splash.png",

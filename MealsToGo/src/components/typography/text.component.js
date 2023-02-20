@@ -9,6 +9,14 @@ const defaultTextStyles = (theme) => `
   margin-bottom: 0px;
 `;
 
+const title = (theme) => `
+  font-size: ${theme.fontSizes.h2}
+  color: ${theme.colors.text.primary}
+  font-family: ${theme.fonts.body}
+  font-weight: ${theme.fontWeights.bold}
+  text-shadow: 0px 0px 4px ${theme.colors.text.inverse}
+`;
+
 const body = (theme) => `
   font-size: ${theme.fontSizes.body}
 `;
@@ -33,6 +41,7 @@ const hint = (theme) => `
 `;
 
 const variants = {
+  title,
   body,
   label,
   caption,

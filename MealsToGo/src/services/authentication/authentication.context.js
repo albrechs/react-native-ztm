@@ -1,6 +1,9 @@
-import React, { useState, createContext, useContext, useEffect } from "react";
-import Constants from "expo-constants";
-import { getApps, initializeApp } from "firebase/app";
+import React, { useState, createContext, useRef } from "react";
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  signOut,
+} from "firebase/auth";
 import { authRequest } from "./authentication.service";
 
 export const AuthContext = createContext();
@@ -9,41 +12,88 @@ export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const auth = useRef(getAuth()).current;
 
-  const { apiKey, messagingSenderId, appId } =
-    Constants.expoConfig.extra.firebase;
-  const firebaseConfig = {
-    apiKey,
-    authDomain: "mealstogo-5ebc7.firebaseapp.com",
-    projectId: "mealstogo-5ebc7",
-    storageBucket: "mealstogo-5ebc7.appspot.com",
-    messagingSenderId,
-    appId,
+  auth.onAuthStateChanged((u) => {
+    if (u) {
+      console.log(u);
+      setUser(u);
+      setIsLoading(false);
+    } else {
+      setIsLoading(false);
+    }
+  });
+
+  const onLogout = () => {
+    signOut(auth)
+      .then(() => {
+        setUser(null);
+        setError(null);
+      })
+      .catch((e) => {
+        setError(e);
+      });
   };
-  let firebaseApp;
-  if (!getApps().length) {
-    firebaseApp = initializeApp(firebaseConfig);
-  }
 
   const onLogin = (email, password) => {
     setIsLoading(true);
-    authRequest(firebaseApp, email, password)
+
+    authRequest(auth, email, password)
       .then((authedUser) => {
         setIsLoading(false);
-        console.log(authedUser);
+        console.log(authedUser.user);
         setIsAuthenticated(true);
         setUser(authedUser);
       })
       .catch((e) => {
         setIsLoading(false);
         console.error(e);
-        setError(error);
+        /* const errSections = e.toString().split(": ");
+        const errMsg = errSections[errSections.length - 1]
+          .replace(" ", ": ")
+          .replace("(auth/", "")
+          .replaceAll("-", " ")
+          .replace(").", ""); */
+        setError(e.toString());
+      });
+  };
+
+  const onRegister = (email, password, passwordConf) => {
+    if (password !== passwordConf) {
+      setError("Error: Passwords do not match");
+      return;
+    }
+    setIsLoading(true);
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((u) => {
+        setUser(u);
+        setIsLoading(false);
+        setIsAuthenticated(true);
+      })
+      .catch((e) => {
+        setIsLoading(false);
+        console.error(e);
+        const errSections = e.toString().split(": ");
+        const errMsg = errSections[errSections.length - 1]
+          .replace(" ", ": ")
+          .replace("(auth/", "")
+          .replaceAll("-", " ")
+          .replace(").", "");
+        setError(errMsg);
       });
   };
 
   return (
     <AuthContext.Provider
-      value={{ user, isAuthenticated: !!user, isLoading, error, onLogin }}
+      value={{
+        user,
+        isAuthenticated: !!user,
+        isLoading,
+        error,
+        onLogin,
+        onRegister,
+        onLogout,
+      }}
     >
       {children}
     </AuthContext.Provider>

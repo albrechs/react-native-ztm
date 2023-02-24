@@ -1,19 +1,29 @@
 import React from "react";
+import LottieView from "lottie-react-native";
 import {
   AccountContainer,
   AccountBackground,
   AccountCover,
+  AnimationContainer,
+  Animation,
   AuthButton,
   AppTitle,
-  Logo,
 } from "../components/account.styles";
 import { Spacer } from "../../../components/spacer/spacer.component";
 
 export const AccountScreen = ({ navigation }) => {
   return (
     <AccountBackground>
-      {/*<Logo />*/}
       <AccountCover />
+      <AnimationContainer>
+        <LottieView
+          key="animation"
+          autoPlay={true}
+          loop
+          resizeMode="cover"
+          source={require("../../../../assets/corgi.json")}
+        />
+      </AnimationContainer>
       <AppTitle>MealsToGo</AppTitle>
       <AccountContainer>
         <AuthButton

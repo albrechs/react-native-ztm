@@ -11,6 +11,7 @@ module.exports = {
       messagingSenderId: process.env.FIREBASE_MESSAGING_ID,
       appId: process.env.FIREBASE_APP_ID,
     },
+    eas: { projectId: "cd8a58b9-1240-4e13-b369-b404195202eb" },
   },
   splash: {
     image: "./assets/splash.png",
@@ -23,14 +24,13 @@ module.exports = {
   assetBundlePatterns: ["**/*"],
   ios: {
     supportsTablet: true,
+    bundleIdentifier: "com.albrechs.mealstogo",
   },
   android: {
+    package: "com.albrechs.mealstogo",
     adaptiveIcon: {
-      foregroundImage: "./assets/adaptive-icon.png",
+      foregroundImage: "./assets/icon.png",
       backgroundColor: "#FFFFFF",
     },
-  },
-  web: {
-    favicon: "./assets/favicon.png",
   },
 };

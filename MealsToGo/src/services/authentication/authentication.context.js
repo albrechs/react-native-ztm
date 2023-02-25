@@ -16,7 +16,6 @@ export const AuthContextProvider = ({ children }) => {
 
   auth.onAuthStateChanged((u) => {
     if (u) {
-      console.log(u);
       setUser(u);
       setIsLoading(false);
     } else {
@@ -41,7 +40,7 @@ export const AuthContextProvider = ({ children }) => {
     authRequest(auth, email, password)
       .then((authedUser) => {
         setIsLoading(false);
-        console.log(authedUser.user);
+
         setIsAuthenticated(true);
         setUser(authedUser);
       })

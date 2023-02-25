@@ -24,7 +24,6 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-console.log(app);
 
 export default function App() {
   useEffect(() => {}, []);
